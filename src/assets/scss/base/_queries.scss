@@ -1,0 +1,31 @@
+/* Big tablets to 1200px (widths samller thsn the 1140px row */
+@media (max-width: 1200px) {
+  .hero-text-box {
+    width: 100%;
+    padding: 0 2%;
+  }
+  .row {
+    padding: 0 2%;
+  }
+}
+
+/* small tablet to big tablet - 768px to 1023px - portrait mode iPad */
+@media (max-width: 1023px) {
+  body { 
+    font-size: 18px; 
+  }
+  .swap {
+    flex-direction: column-reverse;
+  }
+}
+
+
+/* Width of the iPad 767px - 481 to 767 px Small phones to small tables */
+@media (max-width: 767px) {
+
+}
+
+/* Small phones: from 0 to 480 px */
+@media (max-width: 480px) {
+
+}

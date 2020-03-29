@@ -1,20 +1,19 @@
 <template lang="pug">
-  section.global
-    div.container-text
+  section.global(:class="{ swapContainer: switchChange }")
+    div.container-text(:class="{ separation: switchChange }")
       div.container-text__header
         span Label
         ods-switch(
-          v-model="value1"
+          v-model="switchChange"
         )
       div.container-text__body
-        h1.line-effect Title
+        h1.title Title
         p Lorem Ipsum dolor sit amet, consectetur adipiscing elit.
-        ods-button(:round="round") Button
+        ods-button Button
     div.container-img
       div.container-img__clouds
-        span 1
+        img(src="@/assets/images/virus.jpg" width="100%" height="100%")
       div.container-img__rectangle
-        span 2
 </template>
 <script>
 export default {
@@ -23,8 +22,7 @@ export default {
 
   data () {
     return {
-      value1: true,
-      round: false
+      switchChange: false
     }
   }
 }
@@ -36,42 +34,88 @@ export default {
     margin: 8rem 3rem;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .swapContainer {
+    flex-direction: row-reverse;
+  }
+  .separation {
+    margin-left: 1rem;
   }
   .container-text {
-    flex: 1;
-    height: 300px;
+    width: 48%;
+    height: 23rem;
     display: flex;
     flex-direction: column;
     &__header {
       display: flex;
       justify-content: space-between;
+      span {
+        @extend %tp-r-deca;
+      }
     }
     &__body {
-      h1{
+      .title{
         @extend %tp-r-exa;
-        position: relative;
-      }
-      h1::after {
-        width: 120px;
-        height: 3px;
-        background-color: $--color-primary;
-        position: absolute;
+        border-bottom: 3px solid $--color-primary;
+        width: 20%;
       }
       p {
         @extend %tp-r-mega;
+        padding-bottom: 3rem;
+      }
+      .ods-button.is-round {
+        border-radius: 0px;
       }
     }
   }
   .container-img{
-    flex: 1;
-    height: 300px;
+    width: 48%;
+    height: 23rem;
+    position: relative;
     &__clouds {
-      background-color: red;
+      background-color: blue;
+      width: 90%;
+      height: 90%;
+      float: right;
     }
     &__rectangle {
-      width: 15rem;
-      height: 15rem;
-      background-color: $--color-secondary;
+      width: 10rem;
+      height: 10rem;
+      background-color: $--color-danger;
+      z-index: -1;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    body {
+      font-size: 18px;
+    }
+    .swapContainer {
+      flex-direction: column-reverse;
+    }
+    .container-text, .container-img{
+      width: 100%;
+    }
+    br {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    body {
+      font-size: 18px;
+    }
+    .swapContainer {
+      flex-direction: column-reverse;
+    }
+    .container-text, .container-img{
+      width: 100%;
+      &__body{
+        .ods-button {
+          width: 100%;
+        }
+      }
     }
   }
 </style>
