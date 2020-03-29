@@ -1,7 +1,7 @@
 <template lang="pug">
   #app
     template(v-if="!this.$route.path.includes('login')")
-      header-content(@hasTopBar="handleHeigth")
+      header-content
       div.flex-container
         nav-content
         ods-main
